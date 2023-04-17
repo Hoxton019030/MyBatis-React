@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  sql:
+    init:
+      mode: always
+  main:
+    #TODO ??jwtFilter jwtService JwtAuthentication??????????
+    allow-circular-references: true
+
+  datasource:
+    url: jdbc:h2:~/hoxton;AUTO_SERVER=true # ??????C/user/userName?????
+    driver-class-name: org.h2.Driver #??driver
+    username: sa
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+    hibernate:
+      ddl-auto: update
