@@ -24,11 +24,21 @@ public class MemberService {
         memberMapper.addMember(member);
         return 1;
     }
-
     public List<Member> getMemberList(){
-        List<Member> memberList = memberMapper.getMemberList();
         return memberMapper.getMemberList();
     }
+    public Member getMember(int id){
+        return memberMapper.getMemberById(id);
+    }
+    public int update(Member member){
+        String username = member.getUsername();
+        int age = member.getAge();
+        int id = member.getId();
+        return memberMapper.update(id, username, age);
+    }
 
+    public int deleteMember(int id){
+        return memberMapper.delete(id);
+    }
 
 }
