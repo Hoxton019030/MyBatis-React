@@ -40,6 +40,7 @@ public class MemberController {
         String username = memberRequestUpdate.getUsername();
         int age = memberRequestUpdate.getAge();
         Member team = Member.builder().id(id).username(username).age(age).build();
+
         memberService.update(team);
         return ResponseEntity.status(HttpStatus.OK).body("update Succeed");
     }
