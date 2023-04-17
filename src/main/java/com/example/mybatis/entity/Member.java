@@ -1,31 +1,27 @@
 package com.example.mybatis.entity;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author Hoxton
  * @version 0.1.0
  * @since 0.1.0
  **/
-@Entity
-@Getter
-@Setter
-@ToString
+@Entity(name = "member")
 @RequiredArgsConstructor
+@Data
+@Builder
+@AllArgsConstructor
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-    private String userName;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "age")
+    private int age;
 
 }
