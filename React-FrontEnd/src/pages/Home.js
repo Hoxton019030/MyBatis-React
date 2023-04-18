@@ -32,7 +32,7 @@ export default function Home() {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Order</th>
+                            <th scope="col">Id</th>
                             <th scope="col">Name</th>
                             <th scope="col">Age</th>
                             <th scope="col">Action</th>
