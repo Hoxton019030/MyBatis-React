@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link, useParams } from 'react-router-dom';
 
 export default function Home() {
+
+    const {id} = useParams()
 
     const [users, setUsers] = useState([]) //在 React 中，useState 是一個 Hook 函数，它用於添加 state 變量到 React 函數式組件中。這個 Hook 接受一個初始值作為參數，並返回一個由當前狀態和一個更新狀態的函數組成的數組。
 
@@ -15,6 +18,11 @@ export default function Home() {
         const result = await axios.get("http://localhost:8080/member/");
         setUsers(result.data);
 
+    }
+
+    const deleteUser = async (id)=>{
+        await axios.delete(`http://localhost:8080/member/${id}`)
+        loadUsers()
     }
 
     return (
@@ -40,8 +48,8 @@ export default function Home() {
                                     <td>{user.age}</td>
                                     <td>
                                         <button className='btn btn-primary mx-2'>View</button>
-                                        <button className='btn btn-outline-primary mx-2'>Edit</button>
-                                        <button className='btn btn-outline-danger mx-2'>Delete</button>
+                                        <Link className='btn btn-outline-primary mx-2' to={`/edituser/${user.id}`}>Edit</Link>
+                                        <button className='btn btn-outline-danger mx-2' onClick={()=>deleteUser(user.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))

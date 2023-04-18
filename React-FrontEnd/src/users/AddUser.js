@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function AddUser() {
     let navigate = useNavigate()
@@ -42,7 +42,7 @@ export default function AddUser() {
                             <input type={"text"} className='formm-control' placeholder='Enter Your Age' name='age' value={age} onChange={(e) => onInputChange(e)}></input>
                         </div>
                         <button type='submit' className='btn btn-outline-primary'> Sumbit</button>
-                        <button type='submit' className='btn btn-outline-danger mx-2'>Cancel</button>
+                        <Link type='submit' className='btn btn-outline-danger mx-2' to="/">Cancel</Link>
                     </form>
                 </div>
             </div>

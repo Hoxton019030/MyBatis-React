@@ -53,15 +53,14 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Member> getMember(@PathVariable("id") int id) {
+    public ResponseEntity<Member> getMemberById(@PathVariable("id") int id) {
         Member member = memberService.getMember(id);
         return ResponseEntity.status(HttpStatus.OK).body(member);
     }
 
-    @DeleteMapping("/")
-    public ResponseEntity<String> deleteMemberById(@RequestBody MemberRequestDelete memberRequestDelete){
-        int id = memberRequestDelete.getId();
-        memberService.getMember(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteMemberById(@PathVariable("id")int id){
+        memberService.deleteMember(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Succeed");
     }
 }

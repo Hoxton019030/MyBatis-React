@@ -20,6 +20,6 @@ public interface MemberMapper {
     public Member getMemberById(@Param("id") int id);
     @Update("UPDATE member SET username = #{username},age=#{age} WHERE id=#{id}")
     public int update(int id, String username, int age);
-    @Delete("DELETE  member WHERE id=#{id}}")
-    public int delete(int id);
+    @Delete("DELETE FROM MEMBER  WHERE ID =#{id}")
+    public int delete(@Param("id") int id);
 }
