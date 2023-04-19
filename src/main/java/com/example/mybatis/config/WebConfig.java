@@ -1,6 +1,7 @@
 package com.example.mybatis.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -20,9 +21,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-
         registry.addViewController("/").setViewName("forward:/index.html");
+    }
 
-
+    @Override
+    public void addCorsMappings(CorsRegistry corsRegistry){
+        corsRegistry.addMapping("/**").allowedOriginPatterns("*")
+                .allowCredentials(true)
+                .allowedMethods("GET","POST","DELETE","PATCH")
+                .allowedHeaders("*")
+                .maxAge(3600);
     }
 }
