@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "baseUrl": "http://128.199.207.152:8080/"
+    },
+    "include": [
+      "src"
+    ]
+  }
