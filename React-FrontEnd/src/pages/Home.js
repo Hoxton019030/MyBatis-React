@@ -15,13 +15,13 @@ export default function Home() {
     }, [])
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/member/");
+        const result = await axios.get("http://128.199.207.152:8080/member/");
         setUsers(result.data);
 
     }
 
     const deleteUser = async (id)=>{
-        await axios.delete(`http://localhost:8080/member/${id}`)
+        await axios.delete(`http://128.199.207.152:8080/member/${id}`)
         loadUsers()
     }
 

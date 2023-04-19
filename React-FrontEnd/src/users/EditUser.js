@@ -22,7 +22,7 @@ export default function EditUser() {
 
     const onSubmit =async (e) => {
         e.preventDefault();
-        await  axios.patch("http://localhost:8080/member/",user);
+        await  axios.patch("http://128.199.207.152:8080/member/",user);
         navigate("/");
     }
 
@@ -31,7 +31,7 @@ export default function EditUser() {
     },[])
 
     const loadUser = async ()=>{
-        const result = await axios.get(`http://localhost:8080/member/${id}`)
+        const result = await axios.get(`http://128.199.207.152:8080/member/${id}`)
         setUser(result.data)
     }
     return (
