@@ -2,11 +2,9 @@ package com.example.mybatis.controller;
 
 import com.example.mybatis.entity.Member;
 import com.example.mybatis.request.member.MemberRequestCreate;
-import com.example.mybatis.request.member.MemberRequestDelete;
 import com.example.mybatis.request.member.MemberRequestUpdate;
 import com.example.mybatis.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.example.mybatis.service;
 
 import com.example.mybatis.entity.Member;
-import com.example.mybatis.mapper.MemberMapper;
+import com.example.mybatis.mapper.MemberDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,28 +17,28 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class MemberService {
-    final MemberMapper memberMapper;
+    final MemberDao memberDao;
 
 
-    public int addMember(Member member){
-        memberMapper.addMember(member);
+    public int addMember(Member member) {
+        memberDao.save(member);
         return 1;
     }
-    public List<Member> getMemberList(){
-        return memberMapper.getMemberList();
-    }
-    public Member getMember(int id){
-        return memberMapper.getMemberById(id);
-    }
-    public int update(Member member){
-        String username = member.getUsername();
-        int age = member.getAge();
-        int id = member.getId();
-        return memberMapper.update(id, username, age);
+
+    public List<Member> getMemberList() {
+        return memberDao.getMemberList();
     }
 
-    public int deleteMember(int id){
-        return memberMapper.delete(id);
+    public Member getMember(int id) {
+        return memberDao.getMemberById(id);
+    }
+
+    public void update(Member member) {
+        memberDao.save(member);
+    }
+
+    public int deleteMember(int id) {
+        return memberDao.delete(id);
     }
 
 }
