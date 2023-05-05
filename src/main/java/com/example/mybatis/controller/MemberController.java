@@ -5,6 +5,8 @@ import com.example.mybatis.request.member.MemberRequestCreate;
 import com.example.mybatis.request.member.MemberRequestUpdate;
 import com.example.mybatis.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,5 +63,11 @@ public class MemberController {
     public ResponseEntity<String> deleteMemberById(@PathVariable("id")int id){
         memberService.deleteMember(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Succeed");
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<Page<Member>> findAllPage(Pageable pageable){
+        Page<Member> page = memberService.findAll(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 }
