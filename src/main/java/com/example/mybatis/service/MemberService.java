@@ -1,11 +1,12 @@
 package com.example.mybatis.service;
 
-import com.example.mybatis.entity.Member;
 import com.example.mybatis.dao.MemberDao;
 import com.example.mybatis.exception.TargetNotFoundException;
+import com.example.mybatis.entity.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
     final MemberDao memberDao;
+//    final MemberPageRepository<Member,Integer> memberPageRepository;
 
 
     public int addMember(Member member) {
@@ -40,6 +42,10 @@ public class MemberService {
 
     public int deleteMember(int id) {
         return memberDao.delete(id);
+    }
+
+    public Page<Member> findAll(Pageable pageable){
+        return memberDao.findAll(pageable);
     }
 
 }
