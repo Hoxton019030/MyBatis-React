@@ -2,6 +2,7 @@ package com.example.mybatis.service;
 
 import com.example.mybatis.entity.Member;
 import com.example.mybatis.dao.MemberDao;
+import com.example.mybatis.exception.TargetNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +27,11 @@ public class MemberService {
     }
 
     public List<Member> getMemberList() {
-        return memberDao.getMemberList();
+        return memberDao.getMemberList().orElseThrow(() -> new TargetNotFoundException("Not this Member"));
     }
 
     public Member getMember(int id) {
-        return memberDao.getMemberById(id);
+        return memberDao.getMemberById(id).orElseThrow(() -> new TargetNotFoundException("Not this Member"));
     }
 
     public void update(Member member) {

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Hoxton
@@ -16,10 +17,10 @@ import java.util.List;
 @Repository
 public interface MemberDao extends JpaRepository<Member, Integer> {
     @Query(value = "SELECT * FROM member", nativeQuery = true)
-    List<Member> getMemberList();
+    Optional<List<Member>> getMemberList();
 
     @Query(value = "SELECT id,username,age FROM member WHERE id = :id", nativeQuery = true)
-    Member getMemberById(@Param("id") int id);
+    Optional<Member> getMemberById(@Param("id") int id);
 
     @Query(value = "DELETE FROM MEMBER  WHERE ID = :id", nativeQuery = true)
     int delete(@Param("id") int id);
