@@ -1,7 +1,7 @@
 package com.example.mybatis.service;
 
 import com.example.mybatis.entity.Member;
-import com.example.mybatis.mapper.MemberDao;
+import com.example.mybatis.dao.MemberDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -14,7 +14,7 @@ spring:
     allow-circular-references: true
 
   datasource:
-    url: jdbc:h2:~/hoxton;AUTO_SERVER=true # ??????C/user/userName?????
+    url: jdbc:h2:~/mybatis;AUTO_SERVER=true # ??????C/user/userName?????
     driver-class-name: org.h2.Driver #??driver
     username: sa
     password: sa

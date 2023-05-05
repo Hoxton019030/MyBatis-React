@@ -1,4 +1,4 @@
-package com.example.mybatis.mapper;
+package com.example.mybatis.dao;
 
 import com.example.mybatis.entity.Member;
 import org.apache.ibatis.annotations.*;
@@ -15,7 +15,7 @@ import java.util.List;
  **/
 @Repository
 public interface MemberDao extends JpaRepository<Member, Integer> {
-    @Query(value = "SELECT id,username,age FROM member", nativeQuery = true)
+    @Query(value = "SELECT * FROM member", nativeQuery = true)
     List<Member> getMemberList();
 
     @Query(value = "SELECT id,username,age FROM member WHERE id = :id", nativeQuery = true)
