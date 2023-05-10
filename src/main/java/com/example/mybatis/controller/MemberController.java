@@ -31,7 +31,7 @@ public class MemberController {
     final MemberService memberService;
 
     @PostMapping("/")
-    public ResponseEntity<String> createNewMember(@RequestBody @Validated MemberRequestCreate memberRequestCreate, BindingResult bindingResult) {
+    public ResponseEntity<String> createNewMember(@RequestBody @Validated MemberRequestCreate memberRequestCreate) {
         String name = memberRequestCreate.getUsername();
         int age = memberRequestCreate.getAge();
         Member member = Member.builder().username(name).age(age).build();
