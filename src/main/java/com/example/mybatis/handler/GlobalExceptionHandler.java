@@ -27,7 +27,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
-        return new ResponseEntity(fieldErrors, HttpStatus.OK);
+        return new ResponseEntity(fieldErrors, HttpStatus.OK); // TODO: 2023/5/10  這邊需要再調整， fieldError應該要在更細部的把值抓出來
     }
 
 }
