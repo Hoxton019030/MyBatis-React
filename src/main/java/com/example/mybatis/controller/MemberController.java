@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class MemberController {
     final MemberService memberService;
 
     @PostMapping("/")
-    public ResponseEntity<String> createNewMember(@RequestBody MemberRequestCreate memberRequestCreate) {
+    public ResponseEntity<String> createNewMember(@RequestBody @Validated MemberRequestCreate memberRequestCreate, BindingResult bindingResult) {
         String name = memberRequestCreate.getUsername();
         int age = memberRequestCreate.getAge();
         Member member = Member.builder().username(name).age(age).build();
