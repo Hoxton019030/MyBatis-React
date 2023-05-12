@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function AddUser() {
+    const apiURL=process.env.REACT_APP_API_PORT
     let navigate = useNavigate()
 
     const [user, setUser] = useState({
@@ -20,7 +21,7 @@ export default function AddUser() {
 
     const onSubmit =async (e) => {
         e.preventDefault();
-        await  axios.post("http://localhost:8080/member/",user);
+        await  axios.post(apiURL+"member/",user);
         navigate("/");
     }
     return (

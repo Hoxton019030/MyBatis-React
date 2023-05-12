@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 export default function EditUser() {
+    const apiURL=process.env.REACT_APP_API_PORT
     let navigate = useNavigate()
 
     const {id} =  useParams()
@@ -22,7 +23,7 @@ export default function EditUser() {
 
     const onSubmit =async (e) => {
         e.preventDefault();
-        await  axios.patch("http://localhost:8080/member/",user);
+        await  axios.patch(apiURL+"member/",user);
         navigate("/");
     }
 
@@ -31,7 +32,7 @@ export default function EditUser() {
     },[])
 
     const loadUser = async ()=>{
-        const result = await axios.get(`http://localhost:8080/member/${id}`)
+        const result = await axios.get(apiURL+`member/${id}`)
         setUser(result.data)
     }
     return (

@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 export default function Home() {
 
     const {id} = useParams()
+    const apiURL=process.env.REACT_APP_API_PORT
 
     const [users, setUsers] = useState([]) //在 React 中，useState 是一個 Hook 函数，它用於添加 state 變量到 React 函數式組件中。這個 Hook 接受一個初始值作為參數，並返回一個由當前狀態和一個更新狀態的函數組成的數組。
 
@@ -15,13 +16,14 @@ export default function Home() {
     }, [])
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/member/");
+        const result = await axios.get(apiURL+"member/");
         setUsers(result.data);
 
     }
 
     const deleteUser = async (id)=>{
-        await axios.delete(`http://localhost:8080/member/${id}`)
+        // await axios.delete(`http://localhost:8080/member/${id}`)
+        await axios.delete(apiURL+`member/${id}`)
         loadUsers()
     }
 
