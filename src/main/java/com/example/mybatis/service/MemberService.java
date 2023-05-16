@@ -1,6 +1,8 @@
 package com.example.mybatis.service;
 
+import com.example.mybatis.dao.MemberAgeSummaryDao;
 import com.example.mybatis.dao.MemberDao;
+import com.example.mybatis.entity.MemberAgeView;
 import com.example.mybatis.exception.TargetNotFoundException;
 import com.example.mybatis.entity.Member;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
     final MemberDao memberDao;
+    final MemberAgeSummaryDao memberAgeSummaryDao;
 //    final MemberPageRepository<Member,Integer> memberPageRepository;
 
 
@@ -42,6 +45,10 @@ public class MemberService {
 
     public int deleteMember(int id) {
         return memberDao.delete(id);
+    }
+
+    public List<MemberAgeView> getMemberAgeView(){
+        return memberAgeSummaryDao.findAll();
     }
 
     public Page<Member> findAll(Pageable pageable){

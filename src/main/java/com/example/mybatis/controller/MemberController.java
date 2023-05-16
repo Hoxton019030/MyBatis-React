@@ -1,6 +1,7 @@
 package com.example.mybatis.controller;
 
 import com.example.mybatis.entity.Member;
+import com.example.mybatis.entity.MemberAgeView;
 import com.example.mybatis.request.member.MemberRequestCreate;
 import com.example.mybatis.request.member.MemberRequestUpdate;
 import com.example.mybatis.service.MemberService;
@@ -72,5 +73,11 @@ public class MemberController {
     public ResponseEntity<Page<Member>> findAllPage(Pageable pageable){
         Page<Member> page = memberService.findAll(pageable);
         return ResponseEntity.status(HttpStatus.OK).body(page);
+    }
+
+    @GetMapping("/view")
+    public ResponseEntity<List<MemberAgeView>> findMemberView(){
+        List<MemberAgeView> memberAgeView = memberService.getMemberAgeView();
+        return ResponseEntity.status(HttpStatus.OK).body(memberAgeView);
     }
 }
